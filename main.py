@@ -56,12 +56,18 @@ def selector(r):
                 sys.exit()
 
 if __name__ == '__main__':
-    hostname=sys.argv[1]
-    password=sys.argv[2]
 
-    r = StrictRedis(host=hostname,port=6379,password=password,db=0)
+    try:
+        hostname=sys.argv[1]
+        password=sys.argv[2]
 
-    selector(r)
+        r = StrictRedis(host=hostname,port=6379,password=password,db=0)
+
+        selector(r)
+    except:
+        print("El uso del programa es: python main.py <ip publica de la instancia ec2> <contraseña del servidor de redis> \n Ejemplo: python main.py 54.147.175.104 pikachu123")
+
+    
 
 
 
